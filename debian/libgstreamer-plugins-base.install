@@ -1,0 +1,14 @@
+debian/tmp/usr/lib/libgstaudio-0.10.so.*
+debian/tmp/usr/lib/libgstapp-0.10.so.*
+debian/tmp/usr/lib/libgstpbutils-0.10.so.*
+debian/tmp/usr/lib/libgstcdda-0.10.so.*
+debian/tmp/usr/lib/libgstfft-0.10.so.*
+debian/tmp/usr/lib/libgstinterfaces-0.10.so.*
+debian/tmp/usr/lib/libgstnetbuffer-0.10.so.*
+debian/tmp/usr/lib/libgstriff-0.10.so.*
+debian/tmp/usr/lib/libgstrtp-0.10.so.*
+debian/tmp/usr/lib/libgstrtsp-0.10.so.*
+debian/tmp/usr/lib/libgstsdp-0.10.so.*
+debian/tmp/usr/lib/libgsttag-0.10.so.*
+debian/tmp/usr/lib/libgstvideo-0.10.so.*
+debian/tmp/usr/share/locale

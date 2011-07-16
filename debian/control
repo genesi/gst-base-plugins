@@ -1,0 +1,251 @@
+Source: gst-plugins-base0.10
+Section: libs
+Priority: optional
+Maintainer: Maintainers of GStreamer packages <pkg-gstreamer-maintainers@lists.alioth.debian.org>
+Uploaders: Loic Minier <lool@dooz.org>,
+           Sebastien Bacher <seb128@debian.org>,
+           Sebastian Dröge <slomo@debian.org>,
+           Sjoerd Simons <sjoerd@debian.org>
+Build-Depends: libgstreamer0.10-dev (>= 0.10.30), libasound2-dev (>= 0.9.0) [alpha amd64 arm armeb armel avr32 hppa i386 ia64 lpia m32r m68k mips mipsel powerpc powerpcspe ppc64 s390 s390x sh3 sh3eb sh4 sh4eb sparc sparc64] , libgudev-1.0-dev (>= 143) [alpha amd64 arm armeb armel avr32 hppa i386 ia64 lpia m32r m68k mips mipsel powerpc powerpcspe ppc64 s390 s390x sh3 sh3eb sh4 sh4eb sparc sparc64], autotools-dev, cdbs (>= 0.4.20), debhelper (>= 7), gnome-pkg-tools (>= 0.7), pkg-config (>= 0.11.0), libxv-dev (>= 6.8.2.dfsg.1-3), libxt-dev (>= 6.8.2.dfsg.1-3), libvorbis-dev (>= 1.0.0-2), libcdparanoia-dev (>= 3.10.2) [!hurd-i386], libgnomevfs2-dev (>= 1:2.20.0-2), liborc-0.4-dev (>= 0.4.5), libpango1.0-dev (>= 1.16.0), libtheora-dev (>= 0.0.0.alpha5), libglib2.0-dev (>= 2.20.0), libxml2-dev (>= 2.4.23), zlib1g-dev (>= 1:1.1.4), type-handling (>= 0.2.14), libvisual-0.4-dev (>= 0.4.0), gstreamer-tools (>= 0.10.30), dpkg-dev (>= 1.14.13), lsb-release, iso-codes, libgtk2.0-dev (>= 2.12.0), libglib2.0-doc, gstreamer0.10-doc, libgirepository1.0-dev (>= 0.6.3), gobject-introspection (>= 0.6.5-3), gir-repository-dev, gir1.0-glib-2.0, gir1.0-freedesktop, gir1.0-gstreamer-0.10
+Build-Depends-Indep: gtk-doc-tools
+Standards-Version: 3.8.4
+Homepage: http://gstreamer.freedesktop.org
+
+Package: gstreamer0.10-plugins-base-apps
+Architecture: any
+Section: utils
+Depends: ${misc:Depends},
+         ${perl:Depends},
+         gstreamer0.10-tools
+Description: GStreamer helper programs from the "base" set
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains helper programs from the "base" set, an essential
+ exemplary set of elements.
+
+Package: gstreamer0.10-plugins-base-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends},
+         libglib2.0-doc,
+         gstreamer0.10-doc
+Description: GStreamer documentation for plugins from the "base" set
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains documentation for plugins from the "base" set,
+ an essential exemplary set of elements.
+
+Package: libgstreamer-plugins-base0.10-0
+Architecture: any
+Section: libs
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         iso-codes
+Conflicts: totem-gstreamer (<= 2.17.92-0ubuntu1),
+           gstreamer0.10-pulseaudio (<< 0.10.16-4)
+Suggests: libvisual-0.4-plugins,
+          gstreamer-codec-install | gnome-codec-install
+Replaces: gobject-introspection-repository (<< 0.6.5-2)
+Description: GStreamer libraries from the "base" set
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains libraries from the "base" set, an essential
+ exemplary set of elements.
+
+Package: libgstreamer-plugins-base0.10-dev
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libgstreamer-plugins-base0.10-0 (= ${binary:Version}),
+         libc6-dev | libc-dev,
+         pkg-config,
+         libgstreamer0.10-dev (>= 0.10.30),
+         libglib2.0-dev,
+         libxml2-dev
+Replaces: gobject-introspection-repository (<< 0.6.5-2)
+Description: GStreamer development files for libraries from the "base" set
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains development files for GStreamer libraries from
+ the "base" set, an essential exemplary set of elements.
+
+Package: gstreamer0.10-alsa
+Architecture: alpha amd64 arm armeb armel avr32 hppa i386 ia64 lpia m32r m68k mips mipsel powerpc powerpcspe ppc64 s390 s390x sh3 sh3eb sh4 sh4eb sparc sparc64
+Section: libs
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libgstreamer-plugins-base0.10-0 (>= 0.10.30)
+Recommends: alsa-base (>= 0.9.0)
+Suggests: alsa-utils (>= 0.9.0)
+XB-GStreamer-Version: ${gstreamer:Version}
+XB-GStreamer-Elements: ${gstreamer:Elements}
+XB-GStreamer-URI-Sources: ${gstreamer:URISources}
+XB-GStreamer-URI-Sinks: ${gstreamer:URISinks}
+XB-GStreamer-Encoders: ${gstreamer:Encoders}
+XB-GStreamer-Decoders: ${gstreamer:Decoders}
+Provides: ${gstreamer:Provides}
+Description: GStreamer plugin for ALSA
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains the GStreamer plugin for the ALSA library.  ALSA
+ is the Advanced Linux Sound Architecture.
+
+Package: gstreamer0.10-gnomevfs
+Architecture: any
+Section: libs
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: libgnomevfs2-extra
+XB-GStreamer-Version: ${gstreamer:Version}
+XB-GStreamer-Elements: ${gstreamer:Elements}
+XB-GStreamer-URI-Sources: ${gstreamer:URISources}
+XB-GStreamer-URI-Sinks: ${gstreamer:URISinks}
+XB-GStreamer-Encoders: ${gstreamer:Encoders}
+XB-GStreamer-Decoders: ${gstreamer:Decoders}
+Provides: ${gstreamer:Provides}
+Description: GStreamer plugin for GnomeVFS
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains the GStreamer plugin to read from and write to
+ GnomeVFS URIs.  GnomeVFS is the GNOME virtual file-system.
+
+Package: gstreamer0.10-plugins-base
+Architecture: any
+Section: libs
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libgstreamer-plugins-base0.10-0 (>= 0.10.30)
+Recommends: gvfs
+Replaces: gstreamer0.10-plugins-bad (<< 0.10.3+cvs20060814-0ubuntu4)
+XB-GStreamer-Version: ${gstreamer:Version}
+XB-GStreamer-Elements: ${gstreamer:Elements}
+XB-GStreamer-URI-Sources: ${gstreamer:URISources}
+XB-GStreamer-URI-Sinks: ${gstreamer:URISinks}
+XB-GStreamer-Encoders: ${gstreamer:Encoders}
+XB-GStreamer-Decoders: ${gstreamer:Decoders}
+Provides: ${gstreamer:Provides}
+Description: GStreamer plugins from the "base" set
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains the GStreamer plugins from the "base" set, an
+ essential exemplary set of elements.
+
+Package: gstreamer0.10-plugins-base-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: gstreamer0.10-alsa (= ${binary:Version}) [alpha amd64 arm armeb armel avr32 hppa i386 ia64 lpia m32r m68k mips mipsel powerpc powerpcspe ppc64 s390 s390x sh3 sh3eb sh4 sh4eb sparc sparc64],
+         gstreamer0.10-plugins-base (= ${binary:Version}),
+         gstreamer0.10-x (= ${binary:Version}),
+         libgstreamer-plugins-base0.10-0 (= ${binary:Version}),
+         ${misc:Depends}
+Suggests: gstreamer0.10-gnomevfs (= ${binary:Version})
+Replaces: gstreamer0.10-plugins-bad-dbg (<< 0.10.3+cvs20060814-0ubuntu4)
+Description: GStreamer plugins from the "base" set
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains unstripped shared libraries. It is provided primarily
+ to provide a backtrace with names in a debugger, this makes it somewhat
+ easier to interpret core dumps. The libraries are installed in
+ /usr/lib/debug and are automatically used by gdb.
+
+Package: gstreamer0.10-x
+Architecture: any
+Section: libs
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libgstreamer-plugins-base0.10-0 (>= 0.10.30)
+XB-GStreamer-Version: ${gstreamer:Version}
+XB-GStreamer-Elements: ${gstreamer:Elements}
+XB-GStreamer-URI-Sources: ${gstreamer:URISources}
+XB-GStreamer-URI-Sinks: ${gstreamer:URISinks}
+XB-GStreamer-Encoders: ${gstreamer:Encoders}
+XB-GStreamer-Decoders: ${gstreamer:Decoders}
+Provides: ${gstreamer:Provides}
+Description: GStreamer plugins for X11 and Pango
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ This package contains the GStreamer plugins for X11 video output, both
+ for standard Xlib support and for the Xv extension, as well as the
+ plugin for Pango-based text rendering and overlay.
+
+Package: gir1.0-gst-plugins-base-0.10
+Section: libs
+Architecture: any
+Depends: ${gir:Depends},
+         ${shlibs:Depends},
+         ${misc:Depends}
+Replaces: libgstreamer-plugins-base0.10-0 (<< 0.10.25-3),
+          gobject-introspection-repository (<< 0.6.5-2)
+Provides: gir1.0-gstapp-0.10,
+          gir1.0-gstaudio-0.10,
+          gir1.0-gstfft-0.10,
+          gir1.0-gstinterfaces-0.10,
+          gir1.0-gstnetbuffer-0.10,
+          gir1.0-gstpbutils-0.10,
+          gir1.0-gstriff-0.10,
+          gir1.0-gstrtp-0.10,
+          gir1.0-gstrtsp-0.10,
+          gir1.0-gstsdp-0.10,
+          gir1.0-gsttag-0.10,
+          gir1.0-gstvideo-0.10
+Description: Description: GObject introspection data for the GStreamer Plugins Base library
+ This package contains introspection data for the GStreamer Plugins Base library.
+ .
+ GStreamer is a streaming media framework, based on graphs of filters
+ which operate on media data.  Applications using this library can do
+ anything from real-time sound processing to playing videos, and just
+ about anything else media-related.  Its plugin-based architecture means
+ that new data types or processing capabilities can be added simply by
+ installing new plug-ins.
+ .
+ It can be used by packages using the GIRepository format to generate
+ dynamic bindings.
+
+

@@ -1,0 +1,31 @@
+GstBin GstChildProxy
+GstPipeline GstChildProxy
+GstPlayBaseBin GstChildProxy
+GstPlayBin GstChildProxy
+GstPlayBin2 GstChildProxy GstStreamVolume
+GstDecodeBin GstChildProxy
+GstDecodeBin2 GstChildProxy
+GstURIDecodeBin GstChildProxy
+GstPlaySink GstChildProxy
+GstSubtitleOverlay GstChildProxy
+GstAlsaMixerElement GstImplementsInterface GstMixer GstPropertyProbe
+GstAlsaSrc GstImplementsInterface GstMixer GstPropertyProbe
+GstCddaBaseSrc GstURIHandler
+GstCdParanoiaSrc GstURIHandler
+GstV4lElement GstImplementsInterface GstTuner GstXOverlay GstColorBalance GstPropertyProbe
+GstV4lSrc GstImplementsInterface GstTuner GstXOverlay GstColorBalance GstPropertyProbe
+GstGioSrc GstURIHandler
+GstGnomeVFSSrc GstURIHandler
+GstAppSrc GstURIHandler
+GstAlsaSink GstPropertyProbe
+GstGioSink GstURIHandler
+GstGnomeVFSSink GstURIHandler
+GstXImageSink GstImplementsInterface GstNavigation GstXOverlay
+GstXvImageSink GstImplementsInterface GstNavigation GstXOverlay GstColorBalance GstPropertyProbe
+GstAppSink GstURIHandler
+GstTheoraEnc GstPreset
+GstOggMux GstPreset
+GstVorbisEnc GstTagSetter GstPreset
+GstVorbisTag GstTagSetter
+GstVolume GstImplementsInterface GstMixer GstStreamVolume
+PangoCairoFcFontMap PangoCairoFontMap
