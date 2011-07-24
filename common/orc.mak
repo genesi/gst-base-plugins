@@ -40,17 +40,17 @@ cp_v_gen = $(cp_v_gen_$(V))
 cp_v_gen_ = $(cp_v_gen_$(AM_DEFAULT_VERBOSITY))
 cp_v_gen_0 = @echo "  CP     $@";
 
-if HAVE_ORC
+if HAVE_ORCC
 tmp-orc.c: $(srcdir)/$(ORC_SOURCE).orc
-	$(orcc_v_gen)$(ORCC) --implementation --include glib.h -o tmp-orc.c $(srcdir)/$(ORC_SOURCE).orc
+	$(orcc_v_gen)$(ORCC) $(ORCC_FLAGS) --implementation --include glib.h -o tmp-orc.c $(srcdir)/$(ORC_SOURCE).orc
 
 $(ORC_SOURCE).h: $(srcdir)/$(ORC_SOURCE).orc
-	$(orcc_v_gen)$(ORCC) --header --include glib.h -o $(ORC_SOURCE).h $(srcdir)/$(ORC_SOURCE).orc
+	$(orcc_v_gen)$(ORCC) $(ORCC_FLAGS) --header --include glib.h -o $(ORC_SOURCE).h $(srcdir)/$(ORC_SOURCE).orc
 else
-tmp-orc.c: $(srcdir)/$(ORC_SOURCE).orc
+tmp-orc.c: $(srcdir)/$(ORC_SOURCE).orc $(srcdir)/$(ORC_SOURCE)-dist.c
 	$(cp_v_gen)cp $(srcdir)/$(ORC_SOURCE)-dist.c tmp-orc.c
 
-$(ORC_SOURCE).h: $(srcdir)/$(ORC_SOURCE).orc
+$(ORC_SOURCE).h: $(srcdir)/$(ORC_SOURCE).orc $(srcdir)/$(ORC_SOURCE)-dist.c
 	$(cp_v_gen)cp $(srcdir)/$(ORC_SOURCE)-dist.h $(ORC_SOURCE).h
 endif
 
@@ -61,13 +61,16 @@ clean-orc:
 
 dist-hook: dist-hook-orc
 .PHONY: dist-hook-orc
+
+# we try and copy updated orc -dist files below, but don't fail if it
+# doesn't work as the srcdir might not be writable
 dist-hook-orc: tmp-orc.c $(ORC_SOURCE).h
 	$(top_srcdir)/common/gst-indent tmp-orc.c
 	rm -f tmp-orc.c~
 	cmp -s tmp-orc.c $(srcdir)/$(ORC_SOURCE)-dist.c || \
-	  cp tmp-orc.c $(srcdir)/$(ORC_SOURCE)-dist.c
+	  cp tmp-orc.c $(srcdir)/$(ORC_SOURCE)-dist.c || true
 	cmp -s $(ORC_SOURCE).h $(srcdir)/$(ORC_SOURCE)-dist.h || \
-	  cp $(ORC_SOURCE).h $(srcdir)/$(ORC_SOURCE)-dist.h
-	cp -p $(srcdir)/$(ORC_SOURCE)-dist.c $(distdir)/
-	cp -p $(srcdir)/$(ORC_SOURCE)-dist.h $(distdir)/
+	  cp $(ORC_SOURCE).h $(srcdir)/$(ORC_SOURCE)-dist.h || true
+	cp -p tmp-orc.c $(distdir)/$(ORC_SOURCE)-dist.c
+	cp -p $(ORC_SOURCE).h $(distdir)/$(ORC_SOURCE)-dist.h
 
